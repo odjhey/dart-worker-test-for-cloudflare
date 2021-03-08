@@ -2,12 +2,16 @@ import 'package:js/js.dart';
 
 @JS()
 class Request {
+  external String get url;
 }
 
 @JS()
 class Response {
   external factory Response(String body);
 }
+
+@JS('JSON.stringify')
+external String stringify(Object obj);
 
 @JS()
 class FetchEvent {
@@ -25,5 +29,13 @@ void main() {
 }
 
 Response handleRequest(Request request) {
-  return new Response("Dart Worker hello world!");
+  print(stringify(request));
+  var uri = Uri.parse(request.url);
+  uri.pathSegments.forEach((k) {
+    print('path seg: $k');
+  });
+  uri.queryParameters.forEach((k, v) {
+    print('key: $k - value: $v');
+  });
+  return new Response("Dart Workers world!");
 }
