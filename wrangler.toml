@@ -1,0 +1,6 @@
+name = "dart-worker-hello-world"
+type = "webpack"
+account_id = "17d04262e49f624bb588aec71fb5c0e0"
+workers_dev = true
+route = ""
+zone_id = ""
