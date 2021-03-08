@@ -1,7 +1,7 @@
 name: hello_workers
 dependencies:
-  http: ^0.13.0
   js: 0.6.2
+  node_http: ^1.0.1
 
 environment:
   sdk: '>=2.10.0 <3.0.0'

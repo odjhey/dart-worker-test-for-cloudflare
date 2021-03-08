@@ -2,6 +2,7 @@ name = "dart-worker-hello-world"
 type = "webpack"
 account_id = "17d04262e49f624bb588aec71fb5c0e0"
 workers_dev = true
+webpack_config = "webpack.dev.js"
 
 [env.production]
 zone_id = "e823960f4a4b19f01fee6069552471d5"

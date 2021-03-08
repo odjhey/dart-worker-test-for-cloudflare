@@ -1,5 +1,5 @@
 import 'package:js/js.dart';
-import 'package:http/http.dart' as http;
+import 'package:node_http/node_http.dart' as http;
 
 @JS()
 class Request {
@@ -46,11 +46,17 @@ void main() {
     }));
     */
 
+    /*
     event.respondWith(new Promise(allowInterop((resolve, reject) {
       new Future(() {
         print('yaharu1');
         return new Response("yaharu1");
       }).then(resolve, onError: reject);
+    })));
+    */
+
+    event.respondWith(new Promise(allowInterop((resolve, reject) {
+      handleRequest(event.request).then(resolve, onError: reject);
     })));
 
     /*
@@ -71,12 +77,17 @@ Future<Response> handleRequest(Request request) async {
   uri.queryParameters.forEach((k, v) {
     print('key: $k - value: $v');
   });
-  print('request');
 
-/*
   var res =
       await http.get(Uri.https('jsonplaceholder.typicode.com', 'albums/1'));
+
+/*
+  var client = http.Client();
+  var res = client
+      .send(new http.Request('GET', Uri.parse('jsonplaceholder.typicode.com')));
       */
+
+  print(res);
 
   return new Response("Dart Workers world!");
 }
